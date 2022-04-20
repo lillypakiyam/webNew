@@ -1,0 +1,43 @@
+.navbar{
+    background: #002f45;
+}
+.container-fluid{
+    background: #002f45;
+    color: white;
+    margin: 10px;
+
+}
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link {
+    color: gold;
+}
+.navbar-light .navbar-toggler {
+    color: white;
+    border-color: white;
+}
+.collapse .navbar-collapse{
+    padding: 2rem 9%;
+}
+.collapse .navbar-collapse{
+    padding: 2rem 9%;
+}
+
+.header{
+    text-align: justify;
+    
+}
+img{
+    height: 45px;
+}
+@media (min-width:1200px) {
+    .container-fluid{
+        width: 60vw;
+        background: #002f45;
+        color: white;
+        margin-top: 10px;
+        margin-bottom:10px;
+    }
+    
+}

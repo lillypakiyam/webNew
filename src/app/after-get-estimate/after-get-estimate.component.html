@@ -1,0 +1,540 @@
+ 	<!-- newcode -->
+	
+<!-- <p style="padding-top:100px;">after-get-estimate works!</p> -->
+<div class="website">
+  <!-- <div style="padding-top:60px; border-bottom: 1px solid gray;margin: 2rem;" class="container">
+      <table>
+      <tr>
+          <td>
+            <label class="head">CITY TEMPO</label>  
+          </td>
+          <td></td>
+          <td>
+          <label class="head">PACKERS & MOVERS</label>
+          </td>
+          <td></td>
+          <td>
+           <label class="head">DRIVER PARTNERS</label>
+          </td>
+          <td></td>
+          <td>
+           <label class="head">FOR ENTERPRISE</label>
+           </td>
+      </tr>
+  </table>
+  </div> -->
+ 
+  <div class="pickupdrop">
+      <div style="border-bottom: 1px solid gray;margin: 2rem;" class="pickUpAdr">
+          <table>
+          <tr>
+              <!-- <div style="border: 50% solid gray;">
+                  <ion-card style="box-shadow: none; border: 1px solid gray; background-color: white;
+                  height: 25px; width: 25px; border-radius: 30px;"></ion-card>
+                </div> -->
+              <td colspan="12">
+                  <tr>
+                      <div style="border: 10%; color: white;">
+                          <div style="box-shadow: none; border: 1px solid green; background-color: green;
+                          height: 10px; width: 10px; border-radius: 20px;"></div>
+                      </div>
+                  <div style="color: black; padding-left: 30px;">
+                    <label>Pickup Location</label><br>
+                    <!-- <p>{{pickup}}</p>   -->
+               <input value="{{pickup}}" style="border: white;height: fit-content;width: fit-content;" readonly>
+                      </div>
+                  </tr>
+              </td>
+              <td colspan="12">
+                  <tr style="padding-left: 200px;">
+                  <div style="border: 10%; color: white;padding-left: 150px; padding-top: 10px;">
+                      <div style="box-shadow: none; border: 1px solid red; background-color: red;
+                      height: 10px; width: 10px; border-radius: 20px;"></div>
+                  </div>
+              <div style="color: black; padding-left: 150px;">
+              <label> Drop Location</label><br>
+               <!-- <p>{{drop}}</p>  -->
+               <input value="{{drop}}" style="border: white;height: fit-content;width: fit-content;" readonly> 
+              </div>
+          </tr>
+              </td>
+              <td>
+                  <button type="button" class="btn"
+                  style="margin-right: 0px;background: #012f45;color: white;" (click)="open(content)">EDIT</button>
+              </td>
+          </tr>
+      </table>
+      </div>
+  </div>
+  
+  
+  <ng-template #content let-modal style="padding-top: 200px;">
+      <table>
+          <tr>
+             <td class="modal-header">
+              <h4 class="modal-title"
+              id="modal-basic-title" style="color: #012f45;font-weight: bold;text-align: center;">Get Trip Estimate</h4>
+             </td> 
+             <td>
+    
+                 <button type="button" class="close" style="border: none;background: none;"
+                  aria-label="Close" (click)=
+                  "modal.dismiss('Cross click')">
+                <span aria-hidden="true" style="font-size: larger;">
+                  x
+                </span>
+              </button>
+             </td> 
+        
+          </tr>
+      </table>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+                            <div class="input city" style="padding: 5px;">
+                                  <div class="dropdown">
+            <label class="bor">Services</label>
+            <br>
+       
+        <select style="margin: 5px;margin-left: 10px;margin-bottom: 10px;">
+            <option>Select</option>
+            <option>Schedule Pickup & Drop</option>
+            <option>House Shifting</option>
+      </select>
+    </div>
+    </div>
+    <br>
+    <br>
+      
+      <div class="input pickupadr">
+        <div ng-app="myApp" ng-controller="formCtrl">
+              <div class="dropdown">
+              <label class="bor">PickUp Address</label>
+              <br>
+              <input type="text" placeholder="Enter PickUp Address" 
+             value="{{api.pickup_address}}"
+              #box (keyup)="googleSearch(box.value)" 
+                style="margin-left: 10px;margin-bottom: 10px;">
+              </div>
+    
+              <div *ngIf="autoCompleteItems && autoCompleteItems.length !== 0">
+                 <div *ngFor="let item of autoCompleteItems">
+                   <div (click)="getpicAddress(item)">
+                   {{item}}
+                   </div>
+                   </div>
+              </div>
+        </div>
+            </div>
+            <br>
+    <br>
+            <div class="input Dropadr">
+              <div ng-app="myApp" ng-controller="formCtrl">
+                    <div class="dropdown">
+                    <label class="bor">DropOff Address</label>
+                    <br>
+                      <input type="text" placeholder="Enter DropOff Address" 
+                      value="{{api.dropup_address}}"
+                      #boxdr (keyup)="googleSearchDrop(boxdr.value)"
+                      style="margin-left: 10px;margin-bottom: 10px;">
+                  </div> 
+                  </div>
+                  <div *ngIf="autoComplete && autoComplete.length !== 0">
+                   <div *ngFor="let item of autoComplete">
+                     <div (click)="getdropAddress(item)">
+                     {{item}}
+                     </div>
+                     </div>
+                  </div>
+        </div>
+    </div>
+    </form>
+    </div>
+    <div class="modal-footer" style="justify-content: center;">
+        <button  type="button" class="btn" (click)="getEstimate()" (click)=
+        "modal.dismiss('Cross click')"
+         style="background: #012f45;width:-webkit-fill-available;color: white;">Get Estimate</button>
+    </div>
+    </ng-template>  
+  
+  <div class="row" style="padding-left:2rem;">
+
+                  <h2 style="font-weight: 600;">Hello {{usename}}</h2>
+                  <p>Here is your trip fare estimate</p>
+  </div>
+  <div style="padding-left: 20px;" class="pickUpAdr">
+      <table>
+        <tr>  
+          <td> 
+     <section>
+      <div class="card" style="width: 15rem; background-color: #ffbc4191; height: 300px;">
+          <div class="card-body" >
+              <!-- <img src="assets/truk_web.png" alt="" 
+             style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;"> -->
+             <img src="assets/home-img-try.png" alt="" 
+             style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;">
+             
+            <h5 class="card-title" style="color: black;">Looking for full packers and movers solution?</h5>
+            <button type="button" class="btn btn-outline-dark" style="border-radius:20px ;">Learn more</button>
+          </div>
+        </div>
+      </section>
+     </td> 
+     <td>
+      <section>
+       <div style="padding-left: 20px;">
+         <div class="card" style="width: 15rem; height: 300px;" *ngFor="let car of v1farestate[0]">
+             <div class="card-body" >
+                 <h5 class="card-title" style="color: black; text-align: center;font-weight: 500;font-size: 30px;">Car</h5>
+                 <h3 style="color: black;text-align: center;font-size: 30px;font-weight: 500;">€ {{api.fare1}}</h3><br>
+                 <div style="padding-top: 5px; margin-left: 0px; margin-left: 40px;">
+                 <img src="assets/car.png" alt="" 
+             style="max-height: 120px; max-width: 120px;">
+                 </div>
+            <div style="text-align: center;justify-content: center;" class="row">
+              <div class="col">
+             <label style="text-align: center; color: gray;">Capacity:</label>
+             </div>
+             <div class="col">
+             <label style="text-align: center; color: black;"> {{car.capacity}}</label>
+             </div>
+           </div>
+           <div class="row" style="justify-content: center;">
+            <div class="col">
+            <label style="text-align: center; color: gray;">Size(LxBxH):</label>
+            </div>
+            <div class="col">
+            <label style="text-align: center; color: black;"> {{car.size}}</label>
+            </div>
+            </div>
+           </div>
+           </div>
+     </div>
+   </section>
+  </td>
+  
+  <td>
+      <section>
+       <div style="padding-left: 20px;">
+          <div class="card" style="width: 15rem; height: 300px;">
+              <div class="card-body" *ngFor="let van of v2fareStates[0]">
+                  <h5 class="card-title" style="color: black; text-align: center;font-weight: 500;font-size: 30px;">Van</h5>
+                  <h3 style="color: black;text-align: center;font-weight: 500;font-size: 30px;">€ {{api.fare2}}</h3><br>
+                  <div style="padding-top: 5px; margin-left: 0px; margin-left: 40px;">
+                  <img src="assets/vans.png" alt="" 
+              style="max-height: 120px; max-width: 120px;">
+                  </div>
+             <div style="text-align: center;justify-self:center;" class="row">
+              <div class="col">
+              <label style="text-align: center; color: gray;">Capacity:</label>
+              </div>
+              <div class="col">
+              <label style="text-align: center; color: black;">{{van.capacity}} </label>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col">
+              <label style="text-align: center; color: gray;">Size(LxBxH):</label>
+              </div>
+              <div class="col">
+              <label style="text-align: center; color: black;"> {{van.size}}</label>
+              </div>
+              </div>
+              </div>
+              </div>
+     </div>
+   </section>
+  </td>
+  
+  <td>
+      <section>
+       <div style="padding-left: 20px;">
+          <div class="card" style="width: 15rem; height: 300px;">
+              <div class="card-body" *ngFor="let van of v2fareStates[0]">
+                  <h5 class="card-title" style="color: black; text-align: center;font-size: 25px;font-weight: 500;">Van (Helper)</h5>
+                  <h3 style="color: black;text-align: center;font-size: 30px;font-weight: 500;">€ {{api.fare4}}</h3><br>
+                  <div style="padding-top: 5px; margin-left: 0px; margin-left: 40px;">
+                  <img src="assets/vans.png" alt="" 
+              style="max-height: 120px; max-width: 120px;">
+                  </div>
+             <div style="text-align: center;justify-content: center;" class="row">
+              <div class="col">
+              <label style="text-align: center; color: gray;">capacity:</label>
+              </div>
+              <div class="col">
+              <label style="text-align: center; color: black;"> {{van.capacity}} kg</label>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col">
+              <label style="text-align: center; color: gray;">size(LxBxH):</label>
+              </div>
+              <div class="col">
+              <label style="text-align: center; color: black;"> 7ftx4ftx5ft</label>
+              </div>
+              </div>
+            </div>
+            </div>
+     </div>
+   </section>
+  </td>
+  </tr>
+  </table>
+  <br>
+   </div>
+  
+  
+   <!-- mobile view-->
+  
+   <div class="mobile">
+  <section style="padding-top:30px;">
+      <div style="border: 1px;">
+          <div class="" style="border: 2px solid #d3d2d2; background-color: white;border-top: none;border-left: none;padding: 5px;border-right: none;">
+              <div class="content row">
+     
+                     <h3 style="font-weight: bold;padding-left: 2rem;">Hello {{usename}}</h3>
+                              <p style="padding-left: 2rem;">Here is your trip fare estimate</p>
+                              
+                                  <button type="button" class="btn"
+                                    style="margin-right: 0px;width: fit-content;background: #012f45;color: white;margin-top: 20px;margin-left: 75%;margin-top: -5vh;" (click)="open(content)">EDIT</button>    
+           
+            </div>
+          </div>
+      </div>
+      </section>
+      <ng-template #content let-modal style="padding-top: 200px;">
+        <table>
+            <tr>
+               <td>
+                <h4 style="text-align: center;color: #012f45;">Get trip estimate</h4>
+               </td> 
+               <td>
+      
+                   <button type="button" class="close" style="border: none;background: none;"
+                    aria-label="Close" (click)=
+                    "modal.dismiss('Cross click')">
+                  <span aria-hidden="true" style="font-size: larger;">
+                    x
+                  </span>
+                </button>
+               </td> 
+          
+            </tr>
+        </table>  
+         
+          <select style="margin: 5px;margin-left: 10px;margin-bottom: 10px; width: 100px;">
+              <option>Select</option>
+              <option>Schedule Pickup & Drop</option>
+              <option>House Shifting</option>
+        </select>
+      
+        
+        <div class="input pickupadr">
+          <div ng-app="myApp" ng-controller="formCtrl">
+                <div class="dropdown">
+                <label class="bor">PickUp Address</label>
+                <br>
+                <input type="text" placeholder="Enter PickUp Address" 
+               value="{{api.pickup_address}}"
+                #box (keyup)="googleSearch(box.value)" 
+                  style="margin-left: 10px;margin-bottom: 10px;">
+                </div>
+      
+                <div *ngIf="autoCompleteItems && autoCompleteItems.length !== 0">
+                   <div *ngFor="let item of autoCompleteItems">
+                     <div (click)="getpicAddress(item)">
+                     {{item}}
+                     </div>
+                     </div>
+                </div>
+          </div>
+              </div>
+              <br>
+      
+              <div class="input Dropadr">
+                <div ng-app="myApp" ng-controller="formCtrl">
+                      <div class="dropdown">
+                      <label class="bor">DropOff Address</label>
+                      <br>
+                        <input type="text" placeholder="Enter DropOff Address" 
+                        value="{{api.dropup_address}}"
+                        #boxdr (keyup)="googleSearchDrop(boxdr.value)"
+                        style="margin-left: 10px;margin-bottom: 10px;">
+                    </div> 
+                    </div>
+                    <div *ngIf="autoComplete && autoComplete.length !== 0">
+                     <div *ngFor="let item of autoComplete">
+                       <div (click)="getdropAddress(item)">
+                       {{item}}
+                       </div>
+                       </div>
+                    </div>
+          </div>
+      
+          <button type="button" class="btn btn-primary btn-sm" (click)="getEstimate()" (click)=
+          "modal.dismiss('Cross click')">Get Estimate</button>
+      
+      </ng-template>    
+      <section >
+        <div class="back" style="padding:10px;">
+        <div class="card" style="width: 100%; background-color: #ffbc4191; height: 200px;">
+            <div class="card-body" >
+                <img src="assets/truk_web.png" alt="" 
+               style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;">
+               <img src="assets/home-img-try.png" alt="" 
+               style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;">
+               
+              <h5 class="card-title" style="color: black;">Looking for full packers and movers solution?</h5>
+              <button type="button" class="btn btn-outline-dark" style="border-radius:20px ;">Learn more</button>
+            </div>
+          </div>
+          </div>
+          <div class="back" style="background: lightgrey;padding: 5px;">
+            <div class="card" *ngFor="let car of v1farestate[0]">
+            <div class="row" style="padding: 3px;">
+              <div class="col">
+              <h4 style="padding-left: 10px;font-weight: 500;">Car</h4>
+              <!-- cars.jpeg -->
+                 <img src="assets/car.png" alt="" 
+                 style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;">
+            </div>
+            <div class="col">
+              <h3 style="color: black;font-weight: 500;">€ {{api.fare1}}</h3><br>
+            <div class="row">
+              <div class="col">
+               
+                <label style="color: grey;">capacity:</label>
+              </div>
+              <div class="col">
+                <label> {{car.capacity}}</label>
+              </div>
+            </div>
+           
+           <div class="row">
+             <div class="col">
+              <label style="color: grey;">size(LxBxH):</label>
+             </div>
+             <div class="col">
+            <label> {{car.size}}</label>
+             </div>
+           </div>
+            </div>
+                </div>
+            
+          </div>
+          </div>
+          <div class="back" style="background: lightgrey;padding: 5px;">
+            <div class="card"  *ngFor="let van of v2fareStates[0]">
+            <div class="row" style="padding: 3px;">
+              <div class="col">
+              <h4 style="padding-left: 10px;font-weight: 500;">Van</h4>
+                 <img src="assets/vans.png" alt="" 
+                 style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;">
+            </div>
+            <div class="col">
+              <h3 style="color: black;font-weight: 500;">€ {{api.fare2}}</h3><br>
+            <div class="row">
+              <div class="col">
+                <label style="color: grey;">capacity:</label>
+              </div>
+              <div class="col">
+                <label> {{van.capacity}}</label>
+              </div>
+            </div>
+           
+           <div class="row">
+             <div class="col">
+              <label style="color: grey;">size(LxBxH):</label>
+             </div>
+             <div class="col">
+            <label> {{van.size}}</label>
+             </div>
+           </div>
+            </div>
+                </div>
+            
+          </div>
+          </div>
+          <div class="back" style="background: lightgrey;padding: 5px;">
+            <div class="card">
+            <div class="row" style="padding: 3px;"  *ngFor="let van of v2fareStates[0]">
+              <div class="col">
+              <h4 style="padding-left: 10px;font-weight: 500;">Van (Helper)</h4>
+             
+                 <img src="assets/vans.png" alt="" 
+                 style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;">
+            </div>
+            <div class="col">
+              <h3 style="color: black;font-weight: 500;">€ {{api.fare4}}</h3><br>
+            <div class="row">
+              <div class="col">
+                <label style="color: grey;">capacity:</label>
+              </div>
+              <div class="col">
+                <label> {{van.capacity}} kg</label>
+              </div>
+            </div>
+           
+           <div class="row">
+             <div class="col">
+              <label style="color: grey;">size(LxBxH):</label>
+             </div>
+             <div class="col">
+            <label> {{van.size}}</label>
+             </div>
+           </div>
+            </div>
+                </div>
+            
+          </div>
+          </div>
+        </section>
+      
+       
+       
+ </div>
+  
+   <!-- contact section ends -->
+   <section class="footer">
+  
+    <div class="box-container">
+
+        <div class="box">
+            <h3 style="font-weight: bold;">About us</h3>
+            <p>Moving your items can be less stressful and fun with MyCarrio. From the moment of packing through loading to the point of delivery, we got you covered. We also take care of your courier concerns at a very affordable price and within the shortest period</p>
+        </div>
+        <div class="box">
+            <h3 style="font-weight: bold;">Address</h3>
+            <a class="addr"> <i class="fas fa-map-marker-alt"></i> 6a Av. des Hauts-Fourneaux, 4362 Esch-sur-Alzette, Luxembourg</a>
+            <a class="addr"><i class="fas fa-phone-alt"></i> +352661346068</a>
+        </div>
+        <div class="box">
+            <a href="#home">home</a>
+            <!-- <a href="#book">drivers</a> -->
+            <a href="#services">services</a>
+            <a href="#pricing">pricing</a>
+            <a routerLink="/delivery-partner">Delivery Partner</a>
+            <!-- <a href="#gallery">team</a>
+            <a href="#review">review</a> -->
+            <!-- <a href="#contact">contact</a> -->
+        </div>
+        <div class="box">
+          <h3 style="font-weight: bold;">Powered By</h3>
+          <img src="assets/powered4.png" class="powered" alt="">
+        </div>
+        <div class="box">
+            <h3 style="font-weight: bold;">Follow us</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Iwitter</a>
+            <a href="#">Linkedin</a>
+        </div>
+        
+    </div>
+
+    <h1 class="credit"> &copy; <span> Mycarrio </span> | All Rights Reserved! </h1>
+
+</section>
+
+    
+    

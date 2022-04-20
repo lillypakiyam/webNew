@@ -1,0 +1,168 @@
+
+  .footer{
+    background:#333;
+  }
+  
+  .footer .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+  }
+  
+  .footer .box-container .box{
+    padding:2rem 2rem;
+    flex:1 1 25rem;
+  }
+  
+  .footer .box-container .box h3{
+    font-size: 2rem;
+    padding:.7rem 0;
+    color:#fff;
+  }
+  
+  .footer .box-container .box p{
+    font-size: 1.3rem;
+    padding:.7rem 0;
+    color:#eee;
+  }
+  
+  .footer .box-container .box a{
+    display: block;
+    font-size: 1.3rem;
+    padding:.8rem 0;
+    text-decoration: none;
+    color:#eee;
+  }
+  
+  .footer .box-container .box a:hover{
+    color:orange;
+    text-decoration: underline;
+  }
+  
+  .footer .box-container .box .addr:hover{
+    color:orange;
+    text-decoration: none;
+  }
+  
+  .footer .credit{
+    text-align: center;
+    padding:1rem 1rem;
+    margin-top: 1rem;
+    margin: 30px;
+    margin-bottom: 0px;
+    font-size: 1.5rem;
+    font-weight: normal;
+    color:#fff;
+    border-top: .1rem solid rgba(255,255,255,.2);
+  }
+  
+  .footer .credit span{
+    color:orange;
+    font-size: 1.5rem;
+    font-weight: normal;
+  }
+  .book1 .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    align-items: center;
+  }
+  
+  .book1 .row .image{
+    flex:1 1 40rem;
+  }
+  
+  .book1 .row .image img{
+    width:100%;
+  }
+  
+  .book1 .row form{
+    flex:1 1 40rem;
+    padding:2rem;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+    border-radius: .5rem;
+  }
+  
+  .book1 .row .form1{
+    flex:1 1 40rem;
+    padding:5.5rem;
+    /* box-shadow: 0 1rem 2rem rgba(0,0,0,.1); */
+    border-radius: .5rem;
+  }
+  
+  .book1 .row .form1 .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+  }
+  
+  .book1 .row .form1 .box-container .box{
+    flex: 1 1 30rem;
+    border-radius: .5rem;
+    padding:1rem;
+    text-align: center;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+  }
+  
+  .book1 .row .form1 .box-container .box i{
+    padding:1rem;
+    font-size: 4rem;
+    color:orange;
+  }
+  
+  .book1 .row .form1 .box-container .box h3{
+    font-size: 2.5rem;
+    color:#333;
+  }
+  
+  .book1 .row .form1 .box-container .box p{
+    font-size: 1.5rem;
+    color:#666;
+    padding:1rem 0;
+  }
+  
+  .book1 .row form .inputBox{
+    padding:.5rem 0;
+  }
+  
+  .book1 .row form .inputBox input{
+    width:100%;
+    padding:1rem;
+    border:none;
+    font-size: 1.7rem;
+    color:#333;
+    text-transform: none;
+  }
+  
+  .book1 .row .form1 .content p{
+    font-size: 1.5rem;
+    color:#444;
+    padding:.5rem 0;
+  }
+  
+  .book1 .row form .inputBox h3{
+    font-size: 2rem;
+    padding:1rem 0;
+    color:#666;
+  }
+
+  .heading1{
+    text-align: center;
+    padding:9rem 0;
+  
+  }
+  
+  .heading1 span{
+    font-size: 3.5rem;
+    background:rgba(255, 165, 0,.2);
+    color:orange;
+    margin-right:10px;
+    border-radius: .5rem;
+    text-transform: uppercase;
+    padding:.2rem 1rem;
+  }
+  
+  .heading1 span.space{
+    background:none;
+  }
+  
