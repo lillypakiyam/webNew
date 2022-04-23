@@ -1,0 +1,32 @@
+
+<nav class="navbar navbar-expand-lg navbar-light" style=" position: fixed;top:0; left: 0; right:0;z-index: 1000;border-radius: 0px;"> 
+  <div class="container-fluid" >
+    <a> <img src="assets/logo.png"routerLink="">
+  <span style="font-size: 2rem;background:none;color:cyan;font-weight: bold;" routerLink="">Mycarrio</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" *ngIf="navBaricon" (click)="menuclick()"></span>
+      <span class="fa fa-close" id="form-close" *ngIf="!navBaricon" (click)="menuclick()"></span>
+    </button>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item ml-auto">
+        <a class="nav-link active" aria-current="page" href="#home" style="font-size: 1.5rem;margin:0 .8rem;">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#services" style="font-size: 1.5rem;margin:0 .8rem;">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#pricing" style="font-size: 1.5rem;margin:0 .8rem;">Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" (click)="webDelivery()" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 1.5rem;margin:0 .8rem;">
+        Delivery Partner
+        </a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+<router-outlet></router-outlet>

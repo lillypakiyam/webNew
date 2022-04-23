@@ -1,0 +1,244 @@
+<!-- <p >works</p> -->
+<section>
+    <div style="margin-top: 100px; ">
+        <mat-card class="example-card" style="border-bottom: 2px solid gray; background-color: white;">
+            <mat-card-content >
+                <table>
+                    <tr>
+                        <td colspan="6">
+                            <p>Hello {{name}}</p>
+                            <p>Here is your trip fare estimate</p>
+                        </td>
+                        <td></td>
+                        <div style="padding-right: 0px; margin-right: 0px;">
+                          <td colspan="6">
+                                  <button type="button" class="btn btn-primary"
+                                  style="margin-right: 0px;" (click)="open(content)">EDIT</button>
+                          </td>
+                        </div>
+                    </tr>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    </section><br>
+    <ng-template #content let-modal style="padding-top: 200px;">
+      <table>
+          <tr>
+             <td>
+              <h4>Get trip estimate</h4>
+             </td> 
+             <td>
+    
+                 <button type="button" class="close" style="border: none;background: none;"
+                  aria-label="Close" (click)=
+                  "modal.dismiss('Cross click')">
+                <span aria-hidden="true" style="font-size: larger;">
+                  x
+                </span>
+              </button>
+             </td> 
+        
+          </tr>
+      </table>  
+       
+        <select style="margin: 5px;margin-left: 10px;margin-bottom: 10px; width: 100px;">
+            <option>Select</option>
+            <option>Chennai</option>
+            <option>Madurai</option>
+            <option>Tirunelveli</option>
+            <option>Coimbatore</option>
+      </select>
+    
+      
+      <div class="input pickupadr">
+        <div ng-app="myApp" ng-controller="formCtrl">
+              <div class="dropdown">
+              <label class="bor">PickUp Address</label>
+              <br>
+              <input type="text" placeholder="Enter PickUp Address" 
+             value="{{api.pickup_address}}"
+              #box (keyup)="googleSearch(box.value)" 
+                style="margin-left: 10px;margin-bottom: 10px;">
+              </div>
+    
+              <mat-card *ngIf="autoCompleteItems && autoCompleteItems.length !== 0">
+                 <div *ngFor="let item of autoCompleteItems">
+                   <div (click)="getpicAddress(item)">
+                   {{item}}
+                   </div>
+                   </div>
+              </mat-card>
+        </div>
+            </div>
+            <br>
+    
+            <div class="input Dropadr">
+              <div ng-app="myApp" ng-controller="formCtrl">
+                    <div class="dropdown">
+                    <label class="bor">DropOff Address</label>
+                    <br>
+                      <input type="text" placeholder="Enter DropOff Address" 
+                      value="{{api.dropup_address}}"
+                      #boxdr (keyup)="googleSearchDrop(boxdr.value)"
+                      style="margin-left: 10px;margin-bottom: 10px;">
+                  </div> 
+                  </div>
+                  <mat-card *ngIf="autoComplete && autoComplete.length !== 0">
+                   <div *ngFor="let item of autoComplete">
+                     <div (click)="getdropAddress(item)">
+                     {{item}}
+                     </div>
+                     </div>
+                  </mat-card>
+        </div>
+    
+        <button type="button" class="btn btn-primary btn-sm" (click)="getAddress()">Get Estimate</button>
+    
+    </ng-template>    
+    
+     <div style="padding-left: 20px;">
+     <section>
+      <div class="card" style="width: 25rem; background-color: lightsalmon; height: 200px; border-radius: 10px;">
+          <div class="card-body" >
+              <img src="assets/truk_web.png" alt="" 
+             style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;">
+             <img src="assets/home-img-try.png" alt="" 
+             style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;">
+             
+            <h5 class="card-title" style="color: black;">On a strict budget and need to move houses?</h5>
+            <!-- <h5 class="card-title" style="color: black; font-size: small;">On a strict budget and need to move houses?</h5> -->
+            <button type="button" class="btn btn-outline-dark" style="border-radius:20px ;">Learn more</button>
+          </div>
+        </div>
+      </section><br>
+
+    
+      <!-- <section>
+       <div style="padding-left: 20px;">
+         <div class="card" style="width: 25rem; height: 200px;">
+          <table>
+            <tr>
+              <div class="card-body" >
+                <td>
+                  <h5 class="card-title" style="color: black; text-align: center;">Car</h5>
+                  <h3 style="color: black;text-align: center;">₹5000</h3><br>
+                  <div style=" margin-left: 10px;">
+                  <img src="assets/car.png" alt="" 
+              style="max-height: 120px; max-width: 120px;">
+                  </div>
+                </td>
+                <td>
+                  <div style="text-align: center;">
+                   <label style="text-align: center; color: gray;">capacity:</label>
+                   <label style="text-align: center; color: black;"> 2500 kg</label><br>
+                   <label style="text-align: center; color: gray;">size(LxBxH):</label>
+                   <label style="text-align: center; color: black;"> 7ftx4ftx5ft</label>
+                   </div>
+                </td>
+            </div>
+            </tr>
+          </table>
+           </div>
+     </div>
+    </section><br>
+    
+      <section>
+       <div style="padding-left: 20px;">
+          <div class="card" style="width: 25rem; height: 200px;">
+              <div class="card-body" >
+                  <h5 class="card-title" style="color: black; text-align: center;">Van</h5>
+                  <h3 style="color: black;text-align: center;">₹5000</h3><br>
+                  <div style=" margin-left: 40px;">
+                  <img src="assets/van.png" alt="" 
+              style="max-height: 120px; max-width: 120px;">
+                  </div>
+             <div style="text-align: center;">
+              <label style="text-align: center; color: gray;">capacity:</label>
+              <label style="text-align: center; color: black;"> 2500 kg</label><br>
+              <label style="text-align: center; color: gray;">size(LxBxH):</label>
+              <label style="text-align: center; color: black;"> 7ftx4ftx5ft</label>
+              </div>
+            </div>
+            </div>
+     </div>
+    </section>
+    <br>
+      <section>
+       <div style="padding-left: 20px;">
+          <div class="card" style="width: 25rem; height: 200px;">
+              <div class="card-body" >
+                  <h5 class="card-title" style="color: black; text-align: center;">Van (Helper)</h5>
+                  <h3 style="color: black;text-align: center;">₹5000</h3><br>
+                  <div style="margin-left: 40px;">
+                  <img src="assets/van.png" alt="" 
+              style="max-height: 120px; max-width: 120px;">
+                  </div>
+             <div style="text-align: center;">
+              <label style="text-align: center; color: gray;">capacity:</label>
+              <label style="text-align: center; color: black;"> 2500 kg</label><br>
+              <label style="text-align: center; color: gray;">size(LxBxH):</label>
+              <label style="text-align: center; color: black;"> 7ftx4ftx5ft</label>
+              </div>
+            </div>
+            </div>
+     </div>
+    </section> -->
+    </div><br><br>
+
+     <section class="carVan" >
+         <div style="background-color:lightgray; height: 700px;">
+          <div class="card" style="width: 25rem; height: 150px; margin-left: 20px; padding-top: 20px;"
+          *ngFor="let car of v1farestate[0]">
+            <tr>
+              <td>
+                <h4 style="padding-left: 10px;">Car</h4>
+               <img src="assets/car.png" alt="" 
+               style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;">
+              </td>
+              <td>
+                <h3 style="color: black;">€{{api.fare1}}</h3><br>
+                <label>capacity: {{car.capacity}}</label><br>
+                <label>size(LxBxH): {{car.size}}</label><br>
+              </td>
+            </tr>
+          </div><br>
+    
+          <div class="card" style="width: 25rem; height: 150px; margin-left: 20px;"
+          *ngFor="let van of v2fareStates[0]">
+            <tr>
+              <td>
+                <h4 style="padding-left: 10px;">Van</h4>
+               <img src="assets/van.png" alt="" 
+               style="max-height: 100px; max-width: 100px; padding-bottom: 20px; margin-left: 0px;">
+              </td>
+              <td>
+                <h3 style="color: black;">€ {{api.fare2}}</h3><br>
+                <label>capacity: {{van.capacity}}</label><br>
+                <!-- <label> 2500 kg</label><br> -->
+                <label>size(LxBxH): {{van.size}}</label>
+                <!-- <label> 7ftx4ftx5ft</label> -->
+              </td>
+            </tr>
+          </div><br>
+    
+          <div class="card" style="width: 25rem; height: 150px; margin-left: 20px;"
+           *ngFor="let van of v2fareStates[0]">
+            <tr>
+              <td>
+                <h4 style="padding-left: 10px;">Van</h4>
+                <h6 style="padding-left: 10px;"> (Helper)</h6>
+               <img src="assets/van.png" alt="" 
+               style="max-height: 100px; max-width: 100px; padding-bottom: 15px; margin-left: 0px;">
+              </td>
+              <td>
+                <h3 style="color: black;">€{{api.fare4}}</h3><br>
+                <label>capacity: {{van.capacity}}</label><br>
+                <!-- <label> 2500 kg</label><br> -->
+                <label>size(LxBxH): {{van.size}}</label>
+                <!-- <label> 7ftx4ftx5ft</label> -->
+              </td>
+            </tr>
+          </div>
+         </div>
+     </section>
