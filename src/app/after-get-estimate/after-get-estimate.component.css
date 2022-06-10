@@ -1,0 +1,113 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+
+}
+.website {
+	background-color: #fff
+}
+
+.head {
+	color: #000;
+	padding-left: 50px;
+	font-weight: 900;
+	font-size: large;
+	overflow: hidden;
+}
+
+.bor {
+	color: #d3d3d3;
+	background: #fff;
+	font-weight: 700;
+	transform: translate(14px, -15px) scale(1)
+}
+
+@media (min-width:673px) {
+	* {
+		font-size: 12px
+	}
+}
+
+@media (max-width:1200px) {
+	img {
+		width: 200px;
+		border-radius: 10px;
+	}
+
+	.footer .box-container .box .powered {
+		width: 150px;
+	}
+
+	.container {
+		display: none;
+		overflow: hidden;
+	}
+
+	.pickupdrop {
+		display: none
+	}
+
+	.pickUpAdr {
+		margin-top: 100vh;
+		display: none
+	}
+	.mobile{
+		overflow: hidden;
+	}
+}
+
+@media (min-width:1200px) {
+	.popup {
+		display: none
+	}
+
+	.content {
+		font-size: 4%
+	}
+
+	.homeslide {
+		display: none
+	}
+
+	.container1 {
+		display: none
+	}
+
+	.powered {
+		width: 250px
+	}
+
+	img {
+		width: 100%;
+		display: block
+	}
+
+	.pickupdrop{
+		margin-top: 15vh;
+	}
+
+	.mobile {
+		display: none;
+	}
+	.back{
+		display: none;
+	}
+}
+
+@media (max-width:450px) {
+	html {
+		font-size: 50%
+	}
+
+	.heading span {
+		font-size: 2.5rem
+	}
+
+	.contact .row form .inputBox input {
+		width: 100%
+	}
+}
+
+.col {
+	border: none;
+}

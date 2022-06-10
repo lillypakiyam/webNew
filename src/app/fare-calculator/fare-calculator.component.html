@@ -1,0 +1,187 @@
+<!-- <ion-content> -->
+<div style="margin-top: 100px;">
+  <h3 style="color: black;">Type of vehicle</h3>
+  <form>
+    <div id="vechicle">
+    <div class="row">
+      <div class="col " style="border-color: white; margin-left: 10px;">
+      <input type="radio" id="car" name="fav_language" value="Car" (click)="hideHelper('car')">
+      <label for="Car">Car</label><br>
+      </div>
+      <div class="col"  style="border-color: white; margin-right: 50px;"> 
+      <input type="radio" id="van" name="fav_language" value="Van" (click)="hideHelper('van')">
+      <label for="Van">Van</label><br>
+      </div>
+      <div class="col" style="border-color: white; margin-right: 50px; word-wrap: none;">
+      <input type="radio" id="helper" name="fav_language" value="Van with helper" (click)="hideHelper('helper')">
+      <label for="Van with helper">Van with helper</label>
+      </div>
+    </div>
+      <!-- <input type="submit" value="Submit" > -->
+    </div>
+
+    <div class="dropudown" *ngIf="!helpers">
+      <label>Number of helpers</label>
+      <select style="margin: 5px;" (change)="selectChangeHandler($event)">
+        <!-- <option selected="select">0</option> -->
+        <option>1</option>
+        <option>2</option>
+        <!-- <option>House Shifting</option> -->
+      </select>
+    </div>
+  </form>
+</div>
+<div style="margin-top: 10px;">
+  <div class="dropdown">
+    <label class="bor" style="color: black;">PickUp Address</label>
+    <br>
+    <input type="text" placeholder="Enter PickUp Address" value="{{sourceLocation}}" #box
+      (keyup)="googleSearch(box.value)" style="margin-left: 10px;margin-bottom: 10px;">
+  </div>
+</div>
+<div style="	border: 1px solid #d3d3d3;
+      margin-top: 20px" *ngIf="autoCompleteItems && autoCompleteItems.length !== 0">
+  <mat-card *ngIf="autoCompleteItems && autoCompleteItems.length !== 0">
+    <div *ngFor="let item of autoCompleteItems">
+      <div (click)="getpicAddress(item)" style="border-bottom: 1px solid #d3d3d3;
+             padding: 5px">
+        <i class="fa fa-map-marker-alt" style="font-size:16px;color: #002f45;"></i>
+        {{item}}
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- <div #mapElement class="map"></div>
+    <div #textDirections></div> -->
+
+</div><br>
+
+<div>
+  <div class="dropdown">
+    <label class="bor"  style="color: black;">DropOff Address</label>
+    <br>
+    <input type="text" placeholder="Enter DropOff Address" value="{{destinationLocation}}" #boxdr
+      (keyup)="googleSearchdrops(boxdr.value)" style="margin-left: 10px;margin-bottom: 10px;">
+  </div>
+</div>
+<div style="border: 1px solid #d3d3d3;
+          margin-top: 20px" *ngIf="autoComplete && autoComplete.length !== 0">
+  <mat-card>
+    <div *ngFor="let item of autoComplete">
+      <div (click)="getdropAddress(item)" style="border-bottom: 1px solid #d3d3d3;
+             padding: 5px">
+        <i class="fa fa-map-marker-alt" style="font-size:16px;color: #002f45;"></i>
+        {{item}}
+      </div>
+    </div>
+  </mat-card>
+</div><br>
+
+<div class="dropdown">
+  <label class="bor" style="color: black;">Enter distance</label>
+  <br>
+  <input type="text" placeholder="Enter distance" value="{{searchText}}" #boxdis (keyup)="getDistance(boxdis.value)"
+    style="margin-left: 10px;margin-bottom: 10px;">
+</div>
+
+<div id="vechicle">
+  <h3>Furniture</h3>
+  <div class="row">
+    <div class="col" style="border-color: white;">
+      <input type="radio" id="Yes" name="fav_language" value="Yes" (click)="loadtimesFurn('Yes')">
+      <label for="Yes">Yes</label><br>
+    </div>
+  <div class="col" style="border-color: white;">
+    <input type="radio" id="No" name="fav_language" value="No" (click)="loadtimesFurn('No')">
+    <label for="No">No</label><br>
+  </div>
+  </div>
+</div>
+
+<div *ngIf="!loadtimes">
+  <div class="row" id='loadstart'>
+    <div class="inputBox form-group col" style="border: white;">
+      <div class='input-group date ' id='datetimepicker5'>
+        <input type='text' class="form-control input-group-addon glyphicon glyphicon-time" (blur)="timepick($event)"
+          name="time" id="time1" placeholder="Loading time start">
+      </div>
+    </div>
+
+    <div class="inputBox form-group col" style="border: white;">
+      <div class='input-group date ' id='datetimepicker6'>
+        <input type='text' class="form-control input-group-addon glyphicon glyphicon-time" (blur)="timepick1($event)"
+          name="time" id="time2" placeholder="Loading time end">
+        </div>
+      </div>
+    </div>
+  
+  <div class="row">
+    <div class="inputBox form-group col" style="border: white;">
+      <div class='input-group date ' id='datetimepicker1'>
+        <input type='text' class="form-control input-group-addon glyphicon glyphicon-time" ngModel="load_stat"
+          (blur)="timepick2($event)" name="time" id="time3" placeholder="Unloading time start">
+      </div>
+    </div>
+    <div class="inputBox form-group col" style="border: white;">
+      <div class='input-group date ' id='datetimepicker2'>
+        <input type='text' class="form-control input-group-addon glyphicon glyphicon-time" (blur)="timepick3($event)"
+          name="time" id="time4" placeholder="Unloading time end">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!loadunloadtimes">
+  <div class="row">
+    <div class="inputBox form-group col" style="border: white;">
+      <div class='input-group date' id='datetimepicker5'>
+        <input type='text' class="form-control input-group-addon glyphicon glyphicon-time" (blur)="timepick($event)"
+          name="time" id="time1" placeholder="Loading time start">
+      </div>
+    </div>
+
+    <div class="inputBox form-group col" style="border: white;">
+      <div class='input-group date ' id='datetimepicker2'>
+        <input type='text' class="form-control input-group-addon glyphicon glyphicon-time" (blur)="timepick3($event)"
+          name="time" id="time4" placeholder="Unloading time end">
+      </div>
+    </div>
+    </div>
+</div>
+
+<div>
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="VAT" (change)="VATchange($event)">
+  <label>VAT</label>
+</div>
+
+<div class="inputBox form-group col" style="border: white;">
+  <div *ngIf="!carhide">
+    <p> Toatal car fare without VAT: {{tripFare.fare1}}</p>
+  </div>
+  <div *ngIf="!carVat">
+    <p> Toatal car fare with VAT: {{tripFare.fare1}}</p>
+  </div>
+
+  <div *ngIf="!vanhide">
+    <p> Toatal van fare without VAT: {{tripFare.fare2}}</p>
+  </div>
+
+  <div *ngIf="!vanVat">
+    <p> Toatal van fare with VAT : {{tripFare.fare2}}</p>
+  </div>
+
+  <div *ngIf="!helperhide">
+    <p> Toatal fare without vat: {{tripFare.fare4}}</p>
+  </div>
+  <!-- With vat =total fare (17/100)+ total fare-->
+  <div *ngIf="!vatAddnone">
+    <p> Toatal fare with vat: {{tripFare.fare4}}</p>
+  </div>
+</div>
+
+<!-- <section class="footer"> -->
+<div class="get estimation" style="justify-content: center;">
+  <button class="btn" style="background: #002f45;color: white;width: -webkit-fill-available; margin-bottom: 0%;"
+    (click)="Estimate()">GET ESTIMATE</button>
+</div>
+<!-- </section> -->
