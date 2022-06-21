@@ -1,0 +1,57 @@
+
+<nav class="navbar navbar-expand-lg navbar-light" style=" position: fixed;top:0; left: 0; right:0;z-index: 1000;border-radius: 0px;"> 
+  <div class="container-fluid" >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fas fa-bars" *ngIf="navBaricon" (click)="menuclick()" id="menu-bar"></span>
+      <span class="fa fa-close" id="form-close" *ngIf="!navBaricon" (click)="menuclick()"></span>
+    </button>
+    <a style=""> <img src="assets/logopreview.jpg"routerLink="">
+  <span style="font-size: 2rem;background:none;color:cyan;font-weight: bold;" routerLink="">Mycarrio</span></a>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown" *ngIf="navBarContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item ml-auto">
+        <a class="nav-link active" aria-current="page" href="#home" (click)="navebarefale()" style="font-size: 1.5rem;margin:0 .8rem;">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#services" (click)="navebarefale()" style="font-size: 1.5rem;margin:0 .8rem;">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#pricing" (click)="navebarefale()" style="font-size: 1.5rem;margin:0 .8rem;">Pricing</a>
+      </li>
+      <li class="nav-item" (click)="navebarefale()">
+        <a class="nav-link" (click)="webDelivery()" id="navbarDropdownMenuLink" role="button" style="font-size: 1.5rem;margin:0 .8rem;">
+        Delivery Partner
+        </a>
+      </li>
+      <li class="nav-item dropdown" style="border: none;">
+        <a class="nav-link" style="font-size: 1.5rem;margin:0.8rem;margin-top: -1px;"><i class="fas fa-phone-alt"></i> +352661346068</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown" *ngIf="!navBarContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item ml-auto">
+        <a class="nav-link active" aria-current="page" href="#home" (click)="navebarefale()" style="font-size: 1.5rem;margin:0 .8rem;">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#services" (click)="navebarefale()" style="font-size: 1.5rem;margin:0 .8rem;">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#pricing" (click)="navebarefale()" style="font-size: 1.5rem;margin:0 .8rem;">Pricing</a>
+      </li>
+      <li class="nav-item" (click)="navebarefale()">
+        <a class="nav-link" (click)="webDelivery()" id="navbarDropdownMenuLink" role="button" style="font-size: 1.5rem;margin:0 .8rem;">
+        Delivery Partner
+        </a>
+      </li>
+      <li class="nav-item dropdown" style="border: none;">
+        <a class="nav-link" style="font-size: 1.5rem;margin:0.8rem;margin-top: -1px;"><i class="fas fa-phone-alt"></i> +352661346068</a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+<router-outlet></router-outlet>
