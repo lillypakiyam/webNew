@@ -1,0 +1,67 @@
+
+@media (min-width:1200px) {
+    .website{
+        margin-left: 15%;
+        margin-right: 15%;
+        /* margin-top: 10%; */
+    }
+
+	#datetimepicker2 div{
+		padding-left: 10px;
+	}
+}
+#datetimepicker2 ::placeholder  {
+			color: white;
+	 }
+#datetimepicker5 ::placeholder  {
+		color: white;
+ }
+ 
+#cdk-overlay-0{
+	border: white;
+}
+.cdk-overlay-pane{
+	box-shadow: none;
+	
+}
+
+/* input div .bootstrap-datetimepicker-widget {
+	text-align: center;
+ 
+    border-radius: 25px;
+ 
+    background-color:  #05141b;
+ 
+    color:#fff;
+
+	
+} */
+select option { color: black;
+background-color: white;
+}
+/* select option:first-child{
+  color: #002f45;
+} */
+
+@media (max-width:1200px) {
+	
+	.footer .box-container{
+	padding-left: 3rem;
+    padding-right: 3rem;
+	}
+	
+	img {
+		width: 200px;
+		border-radius: 10px
+	}
+
+	
+
+	.footer .box-container .box .powered {
+		width: 150px
+	}
+
+	.container2 {
+		margin-top: 2vh
+	}
+}

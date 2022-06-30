@@ -15,7 +15,10 @@ export class CalculationComponent implements OnInit {
   minutes:any;
   sourceLocation = '';
   destinationLocation = '';
-
+  //overlay
+  isOpenPick=false
+  isOpendrop=false
+  isOpenStime=false
    // prediction
    autoCompleteItems:any
    autoComplete: any
@@ -71,6 +74,7 @@ export class CalculationComponent implements OnInit {
             predict.forEach((data:any) =>{
              const text:any = data.description
               this.autoCompleteItems.push(data.description)
+               this.isOpenPick =true
             })
           }
         })
@@ -91,7 +95,8 @@ export class CalculationComponent implements OnInit {
                 // console.log(data)
                 // this.text = data
                 this.autoComplete.push( data.description)
-                // console.log('autocomplete',this.autoComplete)
+               this.isOpendrop =true
+               // console.log('autocomplete',this.autoComplete)
               })
             }
           })
@@ -426,8 +431,8 @@ export class CalculationComponent implements OnInit {
                    this.tripFare.fare2 = Math.round(tripFarefare2)
                      this.carhide = true
                      this.carVat = true
-                     this.vanhide = true
-                     this.vanVat = false
+                     this.vanhide = false
+                     this.vanVat = true
                      this.helperhide = true
                      this.vatAddnone= true
                      console.log('tripFare_fare1',this.tripFare.fare2);
